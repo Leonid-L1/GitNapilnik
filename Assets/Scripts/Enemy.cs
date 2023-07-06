@@ -1,4 +1,1 @@
-public class Enemy : Combatant
-{
-
-}
+public class Enemy : Combatant { }    

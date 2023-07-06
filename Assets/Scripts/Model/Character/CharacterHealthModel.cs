@@ -1,4 +1,3 @@
- 
 using System;
 
 public class CharacterHealthModel
@@ -21,7 +20,7 @@ public class CharacterHealthModel
         _attackDamage = Damage;
     }
 
-    public void ApplyDamage(int damage)
+    public void RecieveDamage(int damage)
     {
         if (damage >= _health)
         {

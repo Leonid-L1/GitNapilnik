@@ -9,6 +9,7 @@ public class PlatformSetup : MonoBehaviour
 
     [SerializeField] private List<GameObject> _cellObjects;
     [SerializeField] private Timer _timer;
+    [SerializeField] private WarriorSpawnerView _spawnView;
 
     private List<CellView> _cells = new List<CellView>();
     private PlatformPresenter _presenter;
@@ -22,7 +23,7 @@ public class PlatformSetup : MonoBehaviour
 
         _view = GetComponent<PlatformView>();
         _model = new PlatformModel(_cells);
-        _presenter = new PlatformPresenter(_view, _model);
+        _presenter = new PlatformPresenter(_view, _model, _spawnView);
         _timer.AddUpdatable(_presenter);
     }
 

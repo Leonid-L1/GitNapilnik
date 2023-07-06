@@ -1,25 +1,23 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpawnerView))]
+[RequireComponent(typeof(EnemySpawnerView))]
 public class EnemySpawnerSetup : MonoBehaviour
 {
     [SerializeField] private Timer _timer;
-    [SerializeField] private Enemy _template;
-    [SerializeField] private float _timeBetweenSpawn;
+    [SerializeField] private Enemy _template; 
 
-    private SpawnerView _view;
+    private EnemySpawnerView _view;
     private EnemySpawnerModel _model;
     private EnemySpawnerPresenter _presenter;
 
-    private void Awake()
+    public void Init(int enemiesTotalCount, float timeBetweenSpawn, EnemyProgressionBarView progressionView)
     {
-        _view = GetComponent<SpawnerView>();
-        _model = new EnemySpawnerModel(_timeBetweenSpawn, _template.gameObject, transform);
+        _view = GetComponent<EnemySpawnerView>();
+        _model = new EnemySpawnerModel(timeBetweenSpawn, _template.gameObject, transform, enemiesTotalCount);
         _timer.AddUpdatable(_model);
-        _presenter = new EnemySpawnerPresenter(_model, _view);
+        _presenter = new EnemySpawnerPresenter(_model, _view, progressionView);
+        _presenter.Enable();
     }
-
-    private void OnEnable() => _presenter.Enable();
 
     private void OnDisable() => _presenter.Disable();
 }

@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class PlatformView : MonoBehaviour
 {
+    private AudioSource _dropSound;
     private BlockView _selectedBlock;
+
     public BlockView SelectedBlock => _selectedBlock;
     public bool IsAbleToTake { get; private set; }
 
-    public event Action<BlockView> BlockDropped;  
+    public event Action<BlockView> BlockDropped;
 
+    private void Start() => _dropSound = GetComponent<AudioSource>();
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out BlockView block))

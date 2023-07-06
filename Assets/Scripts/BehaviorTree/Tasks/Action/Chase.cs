@@ -13,8 +13,8 @@ public class Chase<TObject, TSharedObject> : Action where TObject : Component wh
         Vector3 direction = Target.Value.transform.position - Selftransform.Value.position;
         direction.y = 0f;
         direction.Normalize();
-
         SelfInput.Value.MovementInput = new Vector2(direction.x, direction.z);
+
         return TaskStatus.Running;
     }
 }

@@ -29,7 +29,7 @@ public class Arrow : MonoBehaviour
     {
         if(other.TryGetComponent(out Enemy enemy))
         {
-            enemy.GetComponent<CharacterHealthView>().ApplyDamage(_damage);
+            enemy.GetComponent<CharacterHealthView>().RecieveDamage(_damage);
             Destroy(gameObject);
         }       
     }

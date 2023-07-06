@@ -7,7 +7,7 @@ public class CellModel
     private BoxCollider _collider;
     private Vector3 _selfPosition;
 
-    private float _toPutHeight = 0.5f;
+    private float _toPutHeight = 3.5f;
     private bool _isUnderCube;
     private Color _defaultColor;
 

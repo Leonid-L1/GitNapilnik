@@ -14,15 +14,15 @@ public class CharacterHealthPresenter : IPresenter
 
     public void Enable()
     {
-        _view.DamagedRecieved += _model.ApplyDamage;
-        _model.HealthChanged += _view.ShowHealth;
-        _model.Death += _animationModel.OnDeath;   
+        _view.DamagedRecieved += _model.RecieveDamage;
+        _model.Death += _view.SetToDestroy;
+        _model.Death += _animationModel.OnDeath;      
     }
 
     public void Disable()
     {
-        _view.DamagedRecieved -= _model.ApplyDamage;
-        _model.HealthChanged += _view.ShowHealth;
+        _view.DamagedRecieved -= _model.RecieveDamage;
+        _model.Death -= _view.SetToDestroy;
         _model.Death -= _animationModel.OnDeath;
     }
 }

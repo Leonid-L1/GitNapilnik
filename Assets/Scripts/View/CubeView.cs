@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class CubeView : MonoBehaviour
 {
-    public abstract void SpawnCombatant(Transform container);
+    
 }
