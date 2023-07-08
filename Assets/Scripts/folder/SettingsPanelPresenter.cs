@@ -14,6 +14,7 @@ public class SettingsPanelPresenter
         _view.MusicVolumeChangeRequested += _model.ChangeMusicVolume;
         _view.EffectsVolumeChangeRequested += _model.ChangeEffectsVolume;
         _view.LanguageChangeRequested += _model.ChangeLanguage;
+        _model.LanguageChanged += _view.UpdateLanguageButton;
     }
 
     public void Disable()
@@ -21,5 +22,6 @@ public class SettingsPanelPresenter
         _view.MusicVolumeChangeRequested -= _model.ChangeMusicVolume;
         _view.EffectsVolumeChangeRequested -= _model.ChangeEffectsVolume;
         _view.LanguageChangeRequested -= _model.ChangeLanguage;
+        _model.LanguageChanged -= _view.UpdateLanguageButton;
     }
 }

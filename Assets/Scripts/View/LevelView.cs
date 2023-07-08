@@ -30,14 +30,9 @@ public class LevelView : MonoBehaviour
         _levelButton.interactable = isUnlocked;
 
         if (isUnlocked)
-        {
             _lockImage.enabled = false;
-        }
-        else 
-        {
+        else
             _lockImage.enabled = true;
-        }
-            
 
         if (starsCount < 0)
             return;
@@ -46,9 +41,5 @@ public class LevelView : MonoBehaviour
             _stars[i].enabled = true;
     }
 
-    private void OnButtonClicked()
-    {
-        Debug.Log("clicked");
-        ButtonClicked?.Invoke();
-    }  
+    private void OnButtonClicked()=> ButtonClicked?.Invoke(); 
 }

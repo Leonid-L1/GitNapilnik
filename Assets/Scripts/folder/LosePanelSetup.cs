@@ -13,6 +13,7 @@ public class LosePanelSetup : MonoBehaviour
     public void Init(int currentLevelNumber)
     {
         _view = GetComponent<LosePanelView>();
+        _view.Init();
         _model = new LosePanelModel(currentLevelNumber);
         _presenter = new LosePanelPresenter(_view, _model);
         _presenter.Enable();

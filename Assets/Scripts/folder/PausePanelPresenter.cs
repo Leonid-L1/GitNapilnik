@@ -13,15 +13,11 @@ public class PausePanelPresenter
     {
         _view.RestartRequsted += _model.RestartLevel;
         _view.MenuRequested += _model.LoadMenu;
-        _view.MusicVolumeChangeRequested += _model.ChangeMusicVolume;
-        _view.EffectsVolumeChangeRequested += _model.ChangeEffectsVolume;
     }
 
     public void Disable()
     {
         _view.RestartRequsted -= _model.RestartLevel;
         _view.MenuRequested -= _model.LoadMenu;
-        _view.MusicVolumeChangeRequested -= _model.ChangeMusicVolume;
-        _view.EffectsVolumeChangeRequested -= _model.ChangeEffectsVolume;
     }
 }

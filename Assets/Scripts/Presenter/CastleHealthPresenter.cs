@@ -14,12 +14,14 @@ public class CastleHealthPresenter
     {
         _view.EnemyEntered += _model.ApplyDamage;
         _model.HealthChanged += _view.OnHealthChanged;
+        _model.HealthIsGone += _losePanel.Show;
     }
 
     public void Disable()
     {
         _view.EnemyEntered -= _model.ApplyDamage;
         _model.HealthChanged -= _view.OnHealthChanged;
+        _model.HealthIsGone -= _losePanel.Show;
     }
 }
 

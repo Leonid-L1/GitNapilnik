@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class LosePanelView : MonoBehaviour
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _menuButton;
 
+    private List<Button> _buttons;
     private TimeScaleController _timeScaleController;
     private Animator _animator;
     private AudioSource _loseSound;
@@ -22,21 +24,6 @@ public class LosePanelView : MonoBehaviour
     public event Action RestartRequested;
     public event Action MenuRequested;
 
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();   
-        _timeScaleController = GetComponent<TimeScaleController>();
-        _loseSound = GetComponent<AudioSource>();         
-    }
-
-
-    private void OnEnable()
-    {
-        _reviveButton.onClick.AddListener(OnReviveButtonClick);
-        _restartButton.onClick.AddListener(OnRestartButtonClick);
-        _menuButton.onClick.AddListener(OnMenuButtonClick);
-    }
-
     private void OnDisable()
     {
         _reviveButton.onClick.RemoveListener(OnReviveButtonClick);
@@ -44,10 +31,32 @@ public class LosePanelView : MonoBehaviour
         _menuButton.onClick.RemoveListener(OnMenuButtonClick);
     }
 
+    public void Init()
+    {
+        _animator = GetComponent<Animator>();   
+        _timeScaleController = GetComponent<TimeScaleController>();
+        _loseSound = GetComponent<AudioSource>();  
+        _buttons = new List<Button>() { _reviveButton, _restartButton, _menuButton };
+
+        _reviveButton.onClick.AddListener(OnReviveButtonClick);
+        _restartButton.onClick.AddListener(OnRestartButtonClick);
+        _menuButton.onClick.AddListener(OnMenuButtonClick);
+
+        foreach (Button button in _buttons)
+            button.interactable = false;
+
+    }
+
     public void Show()
     {
         _animator.Play(ShowAnimation);
         _loseSound.Play();
+    }
+
+    public void SetPanelAsActive()
+    {
+        foreach (Button button in _buttons)
+            button.interactable = true;
     }
 
     public void Remove() => _animator.Play(RemoveAnimation);

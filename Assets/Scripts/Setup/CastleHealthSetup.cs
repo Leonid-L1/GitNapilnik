@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CastleHealthView))]
 public class CastleHealthSetup : MonoBehaviour
-{  
+{
     private CastleHealthView _view;
     private CastleHealthPresenter _presenter;
     private CastleHealthModel _model;

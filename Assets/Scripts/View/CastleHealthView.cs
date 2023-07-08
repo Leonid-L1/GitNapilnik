@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CastleHealthView : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-
+    
     private float _step = 0.1f;
 
     public int CurrentHealth { get; private set; }
@@ -17,7 +17,7 @@ public class CastleHealthView : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
-            enemy.GetComponent<CharacterHealthView>().SetToDestroy();
+            enemy.gameObject.SetActive(false);
             EnemyEntered?.Invoke();          
         }
     }

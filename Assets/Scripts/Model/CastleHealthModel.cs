@@ -12,14 +12,17 @@ public class CastleHealthModel
 
     public void ApplyDamage()
     {   
-        if(_health <= 0) 
+        if(_health <= 0)
+        {
+            HealthIsGone?.Invoke();
             return;
+        }    
 
         _health--;
         HealthChanged?.Invoke(_health);
 
-        if(_health <= 0)
-            HealthIsGone?.Invoke();               
+        if (_health <= 0)
+            HealthIsGone?.Invoke();
     }
 }
 
